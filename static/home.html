@@ -180,7 +180,7 @@ body {
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a name="mainPage" class="navbar-brand" href="" onclick="changeContent(name)">主页</a>
+                <a name="mainPage" class="navbar-brand" href="" onclick="changeContent(name)">主线剧情</a>
             </div>
             <div class="collapse navbar-collapse" id="example-navbar-collapse">
                 <ul class="nav navbar-nav">
@@ -193,7 +193,7 @@ body {
                         <ul class="dropdown-menu">
                             {{ range .Scenes }}
                             <li><a name="scene" href="#" onclick="changeContent(name,{{.Name}})">{{.Name}}</a></li>
-                            {{ end }}
+                            {{- end }}
                         </ul>
                     </li>
                 </ul>
