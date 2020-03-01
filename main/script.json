@@ -1,0 +1,17 @@
+{
+  "Name": "剧本1",
+  "Description": "这是剧本1描述",
+  "Characters": {
+    "1号": {
+      "Name": "1号",
+      "Script": "1号的剧本",
+      "Task": "1号的目标"
+    }
+  },
+  "Scenes": {
+    "场景1": {
+      "Name": "场景1",
+      "Description": "这是场景1的描述"
+    }
+  }
+}

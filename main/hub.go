@@ -4,7 +4,10 @@
 
 package main
 
-import "sync"
+import (
+	"github.com/WindNotStop/LARP/model"
+	"sync"
+)
 
 // Hub maintains the set of active clients and broadcasts messages to the
 // clients.
@@ -23,20 +26,19 @@ type Hub struct {
 
 	//roles
 	roles *sync.Map
-
 }
 
-func newHub(r []string) *Hub {
+func newHub(r map[string]*model.Character) *Hub {
 	roles := &sync.Map{}
-	for _,v := range r{
-		roles.Store(v,"")
+	for k, _ := range r {
+		roles.Store(k, "")
 	}
 	return &Hub{
 		broadcast:  make(chan []byte),
 		register:   make(chan *Client),
 		unregister: make(chan *Client),
 		clients:    make(map[*Client]bool),
-		roles:		roles,
+		roles:      roles,
 	}
 }
 
@@ -48,7 +50,7 @@ func (h *Hub) run() {
 		case client := <-h.unregister:
 			if _, ok := h.clients[client]; ok {
 				delete(h.clients, client)
-				h.roles.Store(client.role,"")
+				h.roles.Store(client.role, "")
 				close(client.send)
 			}
 		case message := <-h.broadcast:

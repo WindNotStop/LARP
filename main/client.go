@@ -66,7 +66,7 @@ func (c *Client) readPump() {
 	c.conn.SetPongHandler(func(string) error { c.conn.SetReadDeadline(time.Now().Add(pongWait)); return nil })
 	for {
 		_, message, err := c.conn.ReadMessage()
-		message = bytes.Join([][]byte{[]byte(c.role), {58}, message},[]byte{})
+		message = bytes.Join([][]byte{[]byte(c.role), {58}, message}, []byte{})
 		if err != nil {
 			if websocket.IsUnexpectedCloseError(err, websocket.CloseGoingAway, websocket.CloseAbnormalClosure) {
 				log.Printf("error: %v", err)
@@ -126,10 +126,10 @@ func (c *Client) writePump() {
 
 // serveWs handles websocket requests from the peer.
 func serveWs(role string, hub *Hub, w http.ResponseWriter, r *http.Request) {
-	if v, ok := hub.roles.Load(role);!ok||v != ""{
+	if v, ok := hub.roles.Load(role); !ok || v != "" {
 		return
 	}
-	hub.roles.Store(role,"1")
+	hub.roles.Store(role, "1")
 
 	conn, err := upgrader.Upgrade(w, r, nil)
 	if err != nil {
@@ -137,7 +137,7 @@ func serveWs(role string, hub *Hub, w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	client := &Client{hub: hub, conn: conn, send: make(chan []byte, 256),role:role}
+	client := &Client{hub: hub, conn: conn, send: make(chan []byte, 256), role: role}
 	client.hub.register <- client
 
 	// Allow collection of memory referenced by the caller by doing all work in
