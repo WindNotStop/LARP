@@ -12,7 +12,7 @@ var scriptName = flag.String("sname", "剧本1", "剧本名")
 
 func main(){
 	flag.Parse()
-	data, err := ioutil.ReadFile("main/script.json")
+	data, err := ioutil.ReadFile("script.json")
 	if err != nil{
 		log.Fatal(data)
 	}
