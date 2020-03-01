@@ -15,7 +15,7 @@
 
 ## Documentation
 
-查看[使用说明](https://github.com/WindNotStop/LAPR/wiki/LAPR)
+查看[使用说明](https://github.com/WindNotStop/LARP/wiki/LARP)
 
 ## Contributing
 
