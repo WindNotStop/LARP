@@ -16,7 +16,3 @@
 ## Documentation
 
 查看[使用说明](https://github.com/WindNotStop/LARP/wiki/LARP)
-
-## Contributing
-
-欢迎有缘的小伙伴
